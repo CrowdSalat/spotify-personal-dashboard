@@ -1,14 +1,22 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <title>My test page</title>
+    <title>my spotify dashboard</title>
+    <link rel="stylesheet" type="text/css" href="{% static '/style.css' %}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
 <body>
-    <p>This is my page</p>
-    <a class="btn btn-primary" href="{{auth_url}}">Allows access to spotify</a>
+    <div class="w3-bar w3-green w3-container">
+        <a href="/dashboard/" class="w3-bar-item w3-button">Home</a>
+    </div>
+    <div id="content" class="w3-container">
+        <p>This webapp shows the artist you follow on spotify</p>
+        <a href="{{auth_url}}"class="w3-btn w3-ripple w3-green">Allows access to spotify</a>
+    </div>
 </body>
 
 </html>
