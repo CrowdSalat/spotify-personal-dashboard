@@ -19,6 +19,30 @@ Grant Type: Authorization Code
 
 ## python
 
+### requirements
+
+you need:
+
+1. python 3
+2. pip3 
+3. modules defined in requirements.txt
+
+### usage
+
+- activate virtualenv `source env/bin/activate`
+- install new packages via `pip install <packageName>` and afterwards save it in requirements.txt `pip3 freeze > requirements.txt`
+
+### install (one time)
+
+1. (optional) install pip3 if not present: `sudo apt-get install python3-pip` 
+2. (optional) install virtualenv if not present: `sudo pip3 install virtualenv` (without sudo it wont be on the path)
+3. checkout repo and navigate inside it: `git clone https://github.com/CrowdSalat/spotify-personal-dashboard.git && cd ./spotify-personal-dashboard` *(you may want to use ssh git url instead of the given https)*
+4. Create virtualenv in root of this repo: `virtualenv env` (env is just the name)
+5. Activate virtualenv: `source env/bin/activate`
+6. Install python packages inside of the virtualenv: `pip3 install -r requirements.txt`
+
+### misc
+
 A nice working [python 2.7 example](https://developer.byu.edu/docs/consume-api/use-api/oauth-20/oauth-20-python-sample-code) for getting oauth token and accessing a oauth secured api.
 
 ## postman example
