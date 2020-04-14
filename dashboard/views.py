@@ -2,9 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from dashboard.spotify_client import SpotifyClient
+from dashboard.application_properties import spotify_client_properties
 
-client_id = "<clientid>"
-secret_clientid = "<secure_clientid>"
+client_id = spotify_client_properties["client_id"]
+secret_clientid = spotify_client_properties["secret_clientid"]
 callback_uri = "http://localhost:8080/dashboard/albums"
 
 def index(request):
