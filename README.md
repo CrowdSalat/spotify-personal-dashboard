@@ -17,6 +17,10 @@ Scope: playlist-read-private playlist-read-collaborative user-library-read user-
 Grant Type: Authorization Code
 ```
 
+## python
+
+A nice working [python 2.7 example](https://developer.byu.edu/docs/consume-api/use-api/oauth-20/oauth-20-python-sample-code) for getting oauth token and accessing a oauth secured api.
+
 ## postman example
 
 The project includes a postman project to explore the spotify api. In order to work:
