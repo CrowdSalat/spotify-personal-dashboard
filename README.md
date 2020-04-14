@@ -29,4 +29,4 @@ The project includes a postman project to explore the spotify api. In order to w
 2. edit the spotify enviroment in postman so it includes your client_id and client_secret [see](#authentication)
 3. under security generate a new oauth2 token and use it.
 
-[Full guide](https://blog.postman.com/2016/11/09/ generate-spotify-playlists-using-a-postman-collection/) from the official postman site explains how to configure a project in order to work with spotify api. 
+[Full guide](https://blog.postman.com/2016/11/09/generate-spotify-playlists-using-a-postman-collection/) from the official postman site explains how to configure a project in order to work with spotify api. 
