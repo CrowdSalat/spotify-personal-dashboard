@@ -7,6 +7,8 @@ Dashboard for showing and clustering currently followed artists on spotify.
 1. [Create a client key](https://developer.spotify.com/documentation/general/guides/app-settings/). After creating you need to edit the [new client](https://developer.spotify.com/dashboard/applications)) and add a redirect uri.
 2. Get new oauth2 access token with the [scopes](https://developer.spotify.com/documentation/general/guides/scopes/#user-read-private) you need.
    
+The spotify [developer dashboard](https://developer.spotify.com/dashboard/login) for managing your api keys.
+
 ```
 Auth URL: https://accounts.spotify.com/authorize
 Access Token URL: https://accounts.spotify.com/api/token
