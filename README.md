@@ -2,7 +2,7 @@
 
 Dashboard for showing and clustering currently followed artists on spotify.
 
-## authentication
+## authentication overview
 
 1. [Create a client key](https://developer.spotify.com/documentation/general/guides/app-settings/). After creating you need to edit the [new client](https://developer.spotify.com/dashboard/applications)) and add a redirect uri.
 2. Get new oauth2 access token with the [scopes](https://developer.spotify.com/documentation/general/guides/scopes/#user-read-private) you need.
@@ -20,6 +20,11 @@ Grant Type: Authorization Code
 ```
 
 ## python
+
+### run
+
+- start django development server on 8080: `python manage.py runserver 8080`
+- 
 
 ### requirements
 
@@ -45,7 +50,10 @@ you need:
 
 ### misc
 
-A nice working [python 2.7 example](https://developer.byu.edu/docs/consume-api/use-api/oauth-20/oauth-20-python-sample-code) for getting oauth token and accessing a oauth secured api.
+- oauth python clients:
+  - [python 2.7 example](https://developer.byu.edu/docs/consume-api/use-api/oauth-20/oauth-20-python-sample-code) 
+  - [python 3 example for spotify](https://gist.github.com/CrowdSalat/770bb1b5a1a8c892b37b7fd940a8e133)
+- django was scaffolded with command: `django-admin startproject config . && python manage.py startapp dashboard`
 
 ## postman example
 
