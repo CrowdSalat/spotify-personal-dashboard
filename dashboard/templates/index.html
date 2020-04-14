@@ -8,15 +8,7 @@
 
 <body>
     <p>This is my page</p>
-    {% if album_list %}
-    <ul>
-        {% for album in album_list %}
-        <p>{{album}}</p>
-        {% endfor %}
-    </ul>
-    {% else %}
-    <p>No albums are available.</p>
-    {% endif %}
+    <a class="btn btn-primary" href="{{auth_url}}">Allows access to spotify</a>
 </body>
 
 </html>
