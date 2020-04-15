@@ -15,11 +15,21 @@
     </div>
     <div id="content" class="w3-container">
         <p>This webapp shows the artist you follow on spotify</p>
-        <a href="{{auth_url}}" class="w3-btn w3-ripple w3-green">Allows access to spotify</a>
+        {% if auth_url %}
+            <a href="{{auth_url}}" class="w3-btn w3-ripple w3-green">Allows access to spotify</a>
+        {% else %}
+            <p>You are logged in.</p>
+            <a href="/dashboard/artists" class="w3-btn w3-ripple w3-green">arists</a>
+            <a href="/dashboard/albums" class="w3-btn w3-ripple w3-green">albums</a>
+            {% endif %}
 
-        <p></p>
+
+        {% if artist_list %}
+            <p>artists</p>
+        {% endif %}
+
+        {% if album_list %}
         <section class="cards">
-            {% if album_list %}
             {% for album in album_list %}
             <div class="w3-card" style="width:92%;max-width:300px;">
                 <img src="{{album.album.images.0.url}}" alt="cover" style="width:100%;opacity:0.85">
@@ -32,12 +42,8 @@
             </div>
             {% endfor %}
         </section>
-
-        {% else %}
-        <p>You are currently not logged in.</p>
         {% endif %}
+     
     </div>
-
 </body>
-
 </html>

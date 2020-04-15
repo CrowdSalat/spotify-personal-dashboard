@@ -41,4 +41,4 @@ def show_albums(request):
 
 
 def show_followed_artists(request):
-    pass
+    return HttpResponse("Hallo Artist")
