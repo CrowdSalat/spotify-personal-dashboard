@@ -1,6 +1,12 @@
 # spotify-personal-dashboard
 
-Dashboard for showing and clustering currently followed artists on spotify.
+Dashboard for showing and clustering currently followed albums on spotify.
+
+## TODO
+
+- handle gained spotify access token in session and allow reload of page (maybe show login symbol and account name)
+- nicer cards and layouts via css
+- better routing with exception handling
 
 ## authentication overview
 
