@@ -3,7 +3,8 @@ from django.http import HttpResponse
 from django.template import loader
 from dashboard.spotify_client import SpotifyClient
 from dashboard.application_properties import spotify_client_properties
-from dashboard.spotify_album_models import welcome_from_dict
+import dashboard.spotify_album_models
+import dashboard.spotify_artist_models
 
 client_id = spotify_client_properties["client_id"]
 secret_clientid = spotify_client_properties["secret_clientid"]
@@ -33,7 +34,7 @@ def show_albums(request):
 
     albums_response_dict = spotify.get_albums()
 
-    result = welcome_from_dict(albums_response_dict)
+    result = dashboard.spotify_album_models.welcome_from_dict(albums_response_dict)
     context = {
         'album_list': result.items,
     }
@@ -41,4 +42,12 @@ def show_albums(request):
 
 
 def show_followed_artists(request):
-    return HttpResponse("Hallo Artist")
+    access_code = request.session.get('access_token')
+    spotify = SpotifyClient(client_id, secret_clientid, callback_uri, access_code)
+    artist_response_dict = spotify.get_artists()
+
+    result = dashboard.spotify_artist_models.welcome_from_dict(artist_response_dict)
+    context = {
+        'artist_list': result.artists.items,
+    }
+    return render(request, 'index.html', context)
