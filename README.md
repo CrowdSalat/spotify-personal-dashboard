@@ -59,7 +59,11 @@ you need:
 - oauth python clients:
   - [python 2.7 example](https://developer.byu.edu/docs/consume-api/use-api/oauth-20/oauth-20-python-sample-code) 
   - [python 3 example for spotify](https://gist.github.com/CrowdSalat/770bb1b5a1a8c892b37b7fd940a8e133)
-- django was scaffolded with command: `django-admin startproject config . && python manage.py startapp dashboard`
+- django was scaffolded with commands:  
+  - `django-admin startproject config` create django project named config
+  - `python manage.py startapp dashboard` create django app inside of django porject named config
+  - `python manage.py migrate` created the standard database tables for django. Needed for session.
+- django docs:
   - [official starting django tutorial](https://docs.djangoproject.com/en/3.0/intro/tutorial01/)
   - [how to handle django project with one django app](https://learndjango.com/tutorials/django-best-practices-projects-vs-apps)
 
