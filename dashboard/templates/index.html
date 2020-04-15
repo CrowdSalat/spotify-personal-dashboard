@@ -15,8 +15,28 @@
     </div>
     <div id="content" class="w3-container">
         <p>This webapp shows the artist you follow on spotify</p>
-        <a href="{{auth_url}}"class="w3-btn w3-ripple w3-green">Allows access to spotify</a>
+        <a href="{{auth_url}}" class="w3-btn w3-ripple w3-green">Allows access to spotify</a>
+
+        <p></p>
+        <section class="cards">
+            {% if album_list %}
+            {% for album in album_list %}
+            <div class="w3-card" style="width:92%;max-width:300px;">
+                <img src="{{album.cover_url}}" alt="cover" style="width:100%;opacity:0.85">
+                <div class="w3-container">
+                    <h4><b>{{album.name}}</b></h4>
+                    <p>Artist: {{album.artist}}</p>
+                    <p>Genres: {{album.genres}}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+
+        {% else %}
+        <p>You are currently not logged in.</p>
+        {% endif %}
     </div>
+
 </body>
 
 </html>
