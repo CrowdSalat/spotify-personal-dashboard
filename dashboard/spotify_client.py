@@ -53,8 +53,11 @@ class SpotifyClient(object):
         return{'Authorization': 'Bearer ' + self.access_token}
 
     def call_get(self, url):
-        return requests.get( url, headers=self.__create_header(), verify=False)
+        resp = requests.get( url, headers=self.__create_header(), verify=False)
+        return json.loads(resp.text)
 
     def get_albums(self):
-        api_call_response = self.call_get("https://api.spotify.com/v1/me/albums")
-        return json.loads(api_call_response.text)
+        return self.call_get("https://api.spotify.com/v1/me/albums")
+
+    def get_artists(self):
+        return self.call_get("https://api.spotify.com/v1/me/following?type=artist")
