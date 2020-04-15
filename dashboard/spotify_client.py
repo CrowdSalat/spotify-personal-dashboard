@@ -57,4 +57,4 @@ class SpotifyClient(object):
 
     def get_albums(self):
         api_call_response = self.call_get("https://api.spotify.com/v1/me/albums")
-        return api_call_response
+        return json.loads(api_call_response.text)
