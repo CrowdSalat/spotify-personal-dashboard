@@ -30,7 +30,9 @@ def show_followed_artists(request):
     access_code = request.session.get('access_token')
     spotify = SpotifyClient(client_id, secret_clientid, callback_uri, access_code)
     artist_items = spotify.get_artists()
+    genre_set = spotify.get_genre_set(artist_items)
     context = {
         'artist_list': artist_items,
+        'genre_set': genre_set,
     }
     return render(request, 'albums.html', context)

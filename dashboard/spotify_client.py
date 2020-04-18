@@ -1,3 +1,4 @@
+from typing import *
 import requests
 import json
 import subprocess
@@ -70,3 +71,9 @@ class SpotifyClient(object):
             return resp_obj.artists.items
         except AssertionError:
             print("Exception at: " + str(next_page))
+
+    def get_genre_set(self, artist_items: List[dashboard.spotify_artist_models.Item]) -> Set[str]:
+        genre_set  = set()
+        for artist in artist_items:
+            genre_set.update(artist.genres)
+        return genre_set
