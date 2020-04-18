@@ -2,7 +2,8 @@ import requests
 import json
 import subprocess
 import sys
-
+import dashboard.spotify_album_models
+import dashboard.spotify_artist_models
 
 class SpotifyClient(object):
     AUTHORIZE_URL = "https://accounts.spotify.com/authorize"
@@ -60,4 +61,13 @@ class SpotifyClient(object):
         return self.call_get("https://api.spotify.com/v1/me/albums")
 
     def get_artists(self):
-        return self.call_get("https://api.spotify.com/v1/me/following?type=artist")
+        resp_json = self.call_get("https://api.spotify.com/v1/me/following?type=artist")
+        resp_obj = dashboard.spotify_artist_models.welcome_from_dict(resp_json)
+        next_page = resp_obj.artists.next
+        while next_page:
+            resp_json2 = self.call_get(next_page)
+            resp_ob2 = dashboard.spotify_artist_models.welcome_from_dict(resp_json2)
+            resp_obj.artists.items.extend(resp_ob2.artists.items)
+            next_page = resp_ob2.artists.next
+
+        return resp_obj.artists.items

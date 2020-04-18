@@ -44,10 +44,8 @@ def show_albums(request):
 def show_followed_artists(request):
     access_code = request.session.get('access_token')
     spotify = SpotifyClient(client_id, secret_clientid, callback_uri, access_code)
-    artist_response_dict = spotify.get_artists()
-
-    result = dashboard.spotify_artist_models.welcome_from_dict(artist_response_dict)
+    artist_items = spotify.get_artists()
     context = {
-        'artist_list': result.artists.items,
+        'artist_list': artist_items,
     }
     return render(request, 'index.html', context)

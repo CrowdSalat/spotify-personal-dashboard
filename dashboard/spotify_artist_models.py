@@ -23,6 +23,13 @@ def from_none(x: Any) -> Any:
     assert x is None
     return x
 
+def from_union(fs, x):
+    for f in fs:
+        try:
+            return f(x)
+        except:
+            pass
+    assert False
 
 def from_int(x: Any) -> int:
     assert isinstance(x, int) and not isinstance(x, bool)
@@ -53,12 +60,12 @@ class Cursors:
     @staticmethod
     def from_dict(obj: Any) -> 'Cursors':
         assert isinstance(obj, dict)
-        after = from_str(obj.get("after"))
+        after = from_union([from_str, from_none], obj.get("after"))
         return Cursors(after)
 
     def to_dict(self) -> dict:
         result: dict = {}
-        result["after"] = from_str(self.after)
+        result["after"] = from_union([from_str, from_none], self.after)
         return result
 
 
@@ -206,7 +213,7 @@ class Artists:
     def from_dict(obj: Any) -> 'Artists':
         assert isinstance(obj, dict)
         items = from_list(Item.from_dict, obj.get("items"))
-        next = from_str(obj.get("next"))
+        next = from_union([from_str, from_none], obj.get("next"))
         total = from_int(obj.get("total"))
         cursors = Cursors.from_dict(obj.get("cursors"))
         limit = from_int(obj.get("limit"))
