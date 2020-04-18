@@ -33,4 +33,4 @@ def show_followed_artists(request):
     context = {
         'artist_list': artist_items,
     }
-    return render(request, 'index.html', context)
+    return render(request, 'albums.html', context)
