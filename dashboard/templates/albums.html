@@ -10,24 +10,25 @@
 </head>
 
 <body>
-    <div class="w3-bar w3-green w3-container">
+    <nav class="w3-bar w3-green w3-container">
         <a href="/dashboard/" class="w3-bar-item w3-button">Home</a>
         <a href="/dashboard/logout" class="w3-bar-item w3-button">Logout</a>
-    </div>
-    <h1>artists</h1>
-
+    </nav>
+    <section>
+        <h1>artists</h1>
+    
         {% if artist_list %}
         <p>You follow {{ artist_list|length }}</p>
         {% if genre_set %}
-            {% for genre in genre_set %}
-                <div class="chip">
-                    {{ genre }}
-                </div>
-            {% endfor %}
+        {% for genre in genre_set %}
+        <div class="chip">
+            {{ genre }}
+        </div>
+        {% endfor %}
 
         {% endif %}
 
-        <section class="cards">            
+        <section class="cards">
             {% for artist in artist_list %}
             <div class="w3-card" style="width:92%;max-width:300px;">
                 <img src="{{artist.images.0.url}}" alt="cover" style="width:100%;opacity:0.85">
@@ -44,7 +45,7 @@
         <p>Currently you are not logged in. Navigate back to home to login spotify.</p>
         <a href="/dashboard/" class="w3-bar-item w3-button">Home</a>
         {% endif %}
-     
-    </div>
+    </section>
 </body>
+
 </html>
