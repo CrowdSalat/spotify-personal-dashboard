@@ -4,6 +4,15 @@
     grid-gap: 1rem;
  }
 
+ .card {
+    width:92%;
+    max-width:300px;
+ }
+
+ .hidden-card {
+     display: none;
+ }
+
  .chip {
     display: inline-block;
     padding: 0 2px;
@@ -12,6 +21,15 @@
     line-height: 10px;
     border-radius: 2px;
     background-color: #9ad598;
+}
+
+.selected-chip{
+    background-color: #16f10e;
+}
+
+.chip:hover{
+    background-color: #cbdbca;
+    cursor: pointer;
 }
 
 .cover {
