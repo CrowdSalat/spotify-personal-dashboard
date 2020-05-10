@@ -26,17 +26,20 @@ def logout(request):
     return redirect('index')
 
 def show_followed_artists(request):
-
-    access_token = request.session.get('access_token')
-    spotify = SpotifyClient(client_id, secret_clientid, callback_uri, access_token)
-    if not access_token:
-        access_code = request.GET.get('code')
-        spotify.request_access_token(access_code)
-        request.session['access_token'] = spotify.access_token
-    artist_items = spotify.get_artists()
-    genre_set = spotify.get_genre_set(artist_items)
-    context = {
-        'artist_list': artist_items,
-        'genre_set': genre_set,
-    }
-    return render(request, 'albums.html', context)
+    try:
+        access_token = request.session.get('access_token')
+        spotify = SpotifyClient(client_id, secret_clientid, callback_uri, access_token)
+        if not access_token:
+            access_code = request.GET.get('code')
+            spotify.request_access_token(access_code)
+            request.session['access_token'] = spotify.access_token
+        artist_items = spotify.get_artists()
+        genre_set = spotify.get_genre_set(artist_items)
+        context = {
+            'artist_list': artist_items,
+            'genre_set': genre_set,
+        }
+        return render(request, 'albums.html', context)
+    except Exception as err:
+         print("Exception while loading albums: {0}".format(err))
+         return redirect('logout')

@@ -55,22 +55,21 @@ class SpotifyClient(object):
 
     def call_get(self, url):
         resp = requests.get( url, headers=self.__create_header(), verify=False)
+        if resp.status_code != 200:
+            raise Exception(resp.status_code, resp.text)
         return json.loads(resp.text)
 
     def get_artists(self):
-        try:
-            resp_json = self.call_get("https://api.spotify.com/v1/me/following?type=artist")
-            resp_obj = dashboard.spotify_artist_models.welcome_from_dict(resp_json)
-            next_page = resp_obj.artists.next
-            while next_page:
-                resp_json2 = self.call_get(next_page)
-                resp_ob2 = dashboard.spotify_artist_models.welcome_from_dict(resp_json2)
-                resp_obj.artists.items.extend(resp_ob2.artists.items)
-                next_page = resp_ob2.artists.next
-
-            return resp_obj.artists.items
-        except AssertionError:
-            print("Exception at: " + str(next_page))
+        resp_json = self.call_get("https://api.spotify.com/v1/me/following?type=artist")
+        print(resp_json)
+        resp_obj = dashboard.spotify_artist_models.welcome_from_dict(resp_json)
+        next_page = resp_obj.artists.next
+        while next_page:
+            resp_json2 = self.call_get(next_page)
+            resp_ob2 = dashboard.spotify_artist_models.welcome_from_dict(resp_json2)
+            resp_obj.artists.items.extend(resp_ob2.artists.items)
+            next_page = resp_ob2.artists.next
+        return resp_obj.artists.items
 
     def get_genre_set(self, artist_items: List[dashboard.spotify_artist_models.Item]) -> Set[str]:
         genre_set  = set()
