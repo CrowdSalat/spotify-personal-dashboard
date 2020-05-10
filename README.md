@@ -30,8 +30,8 @@ Grant Type: Authorization Code
 
 ### run
 
+- activate environment: `source env/bin/activate`
 - start django development server on 8080: `python manage.py runserver 8080`
-- 
 
 ### requirements
 
