@@ -61,7 +61,6 @@ class SpotifyClient(object):
 
     def get_artists(self):
         resp_json = self.call_get("https://api.spotify.com/v1/me/following?type=artist")
-        print(resp_json)
         resp_obj = dashboard.spotify_artist_models.welcome_from_dict(resp_json)
         next_page = resp_obj.artists.next
         while next_page:
