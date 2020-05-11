@@ -7,26 +7,9 @@ Dashboard for showing and clustering currently followed albums on spotify.
 - nicer cards and layouts via css
 - better routing with exception handling
 - more than 20 resutls maybe via paging
-- searching and filtering 
+- searching and filtering
 
-## authentication overview
-
-1. [Create a client key](https://developer.spotify.com/documentation/general/guides/app-settings/). After creating you need to edit the [new client](https://developer.spotify.com/dashboard/applications)) and add a redirect uri.
-2. Get new oauth2 access token with the [scopes](https://developer.spotify.com/documentation/general/guides/scopes/#user-read-private) you need.
-   
-The spotify [developer dashboard](https://developer.spotify.com/dashboard/login) for managing your api keys.
-
-```
-Auth URL: https://accounts.spotify.com/authorize
-Access Token URL: https://accounts.spotify.com/api/token
-Redirect URI: {{callback_uri}}
-Client ID: {{client_id}}
-Client Secret: {{client_secret}}
-Scope: playlist-read-private playlist-read-collaborative user-library-read user-follow-read user-top-read
-Grant Type: Authorization Code
-```
-
-## python
+## development
 
 ### run
 
@@ -41,7 +24,7 @@ you need:
 2. pip3 
 3. modules defined in requirements.txt
 
-### usage
+### update packages
 
 - activate virtualenv `source env/bin/activate`
 - install new packages via `pip install <packageName>` and afterwards save it in requirements.txt `pip3 freeze > requirements.txt`
@@ -55,11 +38,30 @@ you need:
 5. Activate virtualenv: `source env/bin/activate`
 6. Install python packages inside of the virtualenv: `pip3 install -r requirements.txt`
 
-### misc
+## authentication overview
 
+steps:
+
+1. [Create a client key](https://developer.spotify.com/documentation/general/guides/app-settings/). After creating you need to edit the [new client](https://developer.spotify.com/dashboard/applications)) and add a redirect uri.
+2. Get new oauth2 access token with the [scopes](https://developer.spotify.com/documentation/general/guides/scopes/#user-read-private) you need.
+   
+- The spotify [developer dashboard](https://developer.spotify.com/dashboard/login) for managing your api keys.
 - oauth python clients:
   - [python 2.7 example](https://developer.byu.edu/docs/consume-api/use-api/oauth-20/oauth-20-python-sample-code) 
   - [python 3 example for spotify](https://gist.github.com/CrowdSalat/770bb1b5a1a8c892b37b7fd940a8e133)
+ 
+```
+Auth URL: https://accounts.spotify.com/authorize
+Access Token URL: https://accounts.spotify.com/api/token
+Redirect URI: {{callback_uri}}
+Client ID: {{client_id}}
+Client Secret: {{client_secret}}
+Scope: playlist-read-private playlist-read-collaborative user-library-read user-follow-read user-top-read
+Grant Type: Authorization Code
+```
+
+## django
+
 - django was scaffolded with commands:  
   - `django-admin startproject config` create django project named config
   - `python manage.py startapp dashboard` create django app inside of django porject named config
