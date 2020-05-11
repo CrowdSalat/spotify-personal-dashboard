@@ -26,6 +26,8 @@ This projekt uses [gunicorn](https://gunicorn.org/) as WSGI http server. Alterna
 
 To start a gunicorn server which serves the django application run `gunicorn config.wsgi`. By default it will be reachable under [http://localhost:8000] (not on 8080 like in dev mode! You can run '`gunicorn <project_name>.wsgi`', because the `startproject` of django generates a wsgi.py file in the project folder.
 
+This app uses the [whitenoise](http://whitenoise.evans.io/en/stable/) library to serve static files directly via the WSGI Server instead of serving them via a dedicated webserver.  In order to work a wrapper was added in the wsgi python file and in the settings.py a middleware was added as well a the variables STATIC_ROOT and STATIC_URL were added. See commit 1ec48f2fa76abcae8a44eb2620eaebfbc58a04e6.
+
 ## development
 
 ### run
