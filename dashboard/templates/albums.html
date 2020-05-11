@@ -7,39 +7,7 @@
     <title>my spotify dashboard</title>
     <link rel="stylesheet" type="text/css" href="{% static '/style.css' %}">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-    <script>
-
-        function hide_album(element, genre){
-            if(document.getElementsByClassName("selected-chip").length === 0){
-                toggle_hide_albums(true)
-            }
-
-            element.classList.toggle("selected-chip");
-
-            let elements = document.getElementsByClassName("card")
-            
-            for (let element of elements){
-                let genre_attribute = element.getAttribute("data-genres");
-                if(genre_attribute.includes(genre)){
-                    element.classList.toggle("hidden-card");
-                }
-            }
-
-
-            if(document.getElementsByClassName("selected-chip").length === 0){
-                toggle_hide_albums(false)
-            }
-
-        }
-        
-        function toggle_hide_albums(hide){
-            let elements = document.getElementsByClassName("card")
-            for (let element of elements){
-                element.classList.toggle("hidden-card", hide);
-            }
-        }
-    </script>
+    <script src="{% static 'app.js' %}"></script> 
 </head>
 
 <body>
@@ -49,18 +17,16 @@
     </nav>
     <section class=w3-container>
         <h1>artists</h1>
-    
         {% if artist_list %}
         <p>You follow {{ artist_list|length }}</p>
         {% if genre_set %}
         {% for genre in genre_set %}
-        <div class="chip"  onclick="hide_album(this, '{{ genre }}')">
+        <div class="chip"  onclick="toggle_hide_album(this, '{{ genre }}')">
             {{ genre }}
         </div>
         {% endfor %}
 
         {% endif %}
-
         <section class="cards">
             {% for artist in artist_list %}
             <div class="w3-card card" data-genres="{{artist.genres}}">
