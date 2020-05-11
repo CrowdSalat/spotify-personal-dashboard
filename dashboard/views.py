@@ -7,13 +7,13 @@ from dashboard.application_properties import spotify_client_properties
 
 client_id = spotify_client_properties["client_id"]
 secret_clientid = spotify_client_properties["secret_clientid"]
-callback_uri = "http://localhost:8080/dashboard/albums"
+callback_url = spotify_client_properties["callback_url"]
 
 def index(request):
     if request.session.get('access_token'):
         return redirect('show_album')
     
-    spotify = SpotifyClient(client_id, secret_clientid, callback_uri)
+    spotify = SpotifyClient(client_id, secret_clientid, callback_url)
     
     auth_url = spotify.get_spotify_auth_page()
     context = {
@@ -28,7 +28,7 @@ def logout(request):
 def show_followed_artists(request):
     try:
         access_token = request.session.get('access_token')
-        spotify = SpotifyClient(client_id, secret_clientid, callback_uri, access_token)
+        spotify = SpotifyClient(client_id, secret_clientid, callback_url, access_token)
         if not access_token:
             access_code = request.GET.get('code')
             spotify.request_access_token(access_code)
