@@ -1,0 +1,14 @@
+.git/
+.vscode/
+env/
+postman/
+
+README.md
+
+# django
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
