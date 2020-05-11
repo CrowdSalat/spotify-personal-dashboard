@@ -9,8 +9,12 @@ https://docs.djangoproject.com/en/3.0/howto/deployment/wsgi/
 
 import os
 
+## allows serving of static files directly through a wsgi server
+from whitenoise import WhiteNoise
+
 from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 
 application = get_wsgi_application()
+application = WhiteNoise(application, root='static/')
