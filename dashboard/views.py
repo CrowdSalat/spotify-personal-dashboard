@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.template import loader
 from dashboard.spotify_client import SpotifyClient
 from dashboard.application_properties import spotify_client_properties
+import traceback
 
 client_id = spotify_client_properties["client_id"]
 secret_clientid = spotify_client_properties["secret_clientid"]
@@ -41,5 +42,5 @@ def show_followed_artists(request):
         }
         return render(request, 'albums.html', context)
     except Exception as err:
-         print("Exception while loading albums: {0}".format(err))
+         print(traceback.format_exc())
          return redirect('logout')
