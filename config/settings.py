@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'rmlj*c^6#do(a(4th+@dwmlyb^#05fbb)j^bp%lmikr4den1j%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('SPOTIDASH_DEBUG') == "", 
+DEBUG = os.getenv('SPOTIDASH_DEBUG') == None 
 
 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "spotidash.weyrich.dev"]
 
