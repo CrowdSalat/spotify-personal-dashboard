@@ -3,6 +3,7 @@ services:
     spotidash:
         container_name:  spotidash
         image: crowdsalat/spotidash:latest
+	restart: always
         ports:
           - "10000:8080"
         environment:
