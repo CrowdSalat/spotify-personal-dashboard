@@ -25,11 +25,11 @@ steps:
       - docker-compose pull
       - docker-compose up -d --force-recreate
     environment:
-      CALLBACK_URI: "https://spotidash.weyrich.dev/dashboard/albums"
-      SPOTIFY_API_KEY_SECRET:
-        from_secret: SPOTIFY_API_KEY_SECRET
-      SPOTIFY_API_KEY:
-        from_secret: SPOTIFY_API_KEY
+      SPOTIFY_CALLBACK_URL: "https://spotidash.weyrich.dev/dashboard/albums"
+      SPOTIFY_CLIENT_ID_SECRET:
+        from_secret: SPOTIFY_CLIENT_ID_SECRET
+      SPOTIFY_CLIENT_ID:
+        from_secret: SPOTIFY_CLIENT_ID
 
 
       

@@ -8,6 +8,6 @@ services:
           - "127.0.0.1:10000:8080"
         environment:
           # pass environment variables
-          - SPOTIFY_API_KEY
-          - SPOTIFY_API_KEY_SECRET
-          - CALLBACK_URI
+          - SPOTIFY_CLIENT_ID
+          - SPOTIFY_CLIENT_ID_SECRET
+          - SPOTIFY_CALLBACK_URL
