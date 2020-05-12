@@ -30,6 +30,7 @@ steps:
         from_secret: SPOTIFY_CLIENT_ID_SECRET
       SPOTIFY_CLIENT_ID:
         from_secret: SPOTIFY_CLIENT_ID
+      SPOTIDASH_DEBUG: "No, indeed!"
 
 
       
