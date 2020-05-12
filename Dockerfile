@@ -13,9 +13,9 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-EXPOSE 8080
+EXPOSE 8000
 
 # create database
 RUN python manage.py migrate
 
-ENTRYPOINT ["gunicorn","--bind", "0.0.0.0:8080", "config.wsgi"]
+ENTRYPOINT ["gunicorn","--bind", "0.0.0.0:8000", "config.wsgi"]

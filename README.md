@@ -13,10 +13,10 @@ Dashboard for showing and clustering currently followed albums on spotify.
 
 Before you run the image on your computer you need to create a client key at spotify like described in [authentication overview](## authentication overview]
 
-- Run with docker: `docker run -d --name spotidash -p 8080:8080 -e SPOTIFY_CLIENT_ID=<> -e SPOTIFY_SECRET_CLIENT_ID=<> crowdsalat/spotidash`
+- Run with docker: `docker run -d --name spotidash -p 8000:8000 -e SPOTIFY_CLIENT_ID=<> -e SPOTIFY_SECRET_CLIENT_ID=<> crowdsalat/spotidash`
 - Or with compose: add the spotify variables in the docker-compose file and run `docker-compose up`
 
-You may also want to overwrite the host part of SPOTIFY_CALLBACK_URL. It defaults to localhost:8080/dashboard/albums  
+You may also want to overwrite the host part of SPOTIFY_CALLBACK_URL. It defaults to localhost:8000/dashboard/albums  
 
 ## production configuration
 
@@ -24,7 +24,7 @@ You may also want to overwrite the host part of SPOTIFY_CALLBACK_URL. It default
 
 This projekt uses [gunicorn](https://gunicorn.org/) as WSGI http server. Alternative servers are listed [here](https://docs.djangoproject.com/en/3.0/howto/deployment/wsgi/). To check whether your application is production ready read [this article](https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/) or run `python manage.py check --deploy` for a subset of the recommended checks.
 
-To start a gunicorn server which serves the django application run `gunicorn config.wsgi`. By default it will be reachable under [http://localhost:8000] (not on 8080 like in dev mode! You can run '`gunicorn <project_name>.wsgi`', because the `startproject` of django generates a wsgi.py file in the project folder.
+To start a gunicorn server which serves the django application run `gunicorn config.wsgi`. By default it will be reachable under [http://localhost:8000]. You can run '`gunicorn <project_name>.wsgi`', because the `startproject` of django generates a wsgi.py file in the project folder.
 
 This app uses the [whitenoise](http://whitenoise.evans.io/en/stable/) library to serve static files directly via the WSGI Server instead of serving them via a dedicated webserver.  In order to work a wrapper was added in the wsgi python file and in the settings.py a middleware was added as well a the variables STATIC_ROOT and STATIC_URL were added. See commit 1ec48f2fa76abcae8a44eb2620eaebfbc58a04e6.
 
@@ -33,7 +33,7 @@ This app uses the [whitenoise](http://whitenoise.evans.io/en/stable/) library to
 ### run
 
 - activate environment: `source env/bin/activate`
-- start django development server on 8080: `python manage.py runserver 8080`
+- start django development server on 8000: `python manage.py runserver`
 
 ### requirements
 
