@@ -4,6 +4,9 @@ name: spotidash
 steps:
   - name: build and push docker image
     image: plugins/docker
+    volumes:
+      - name: docker_sock
+        path: /var/run/docker.sock
     settings:
       username:
         from_secret: docker_username
