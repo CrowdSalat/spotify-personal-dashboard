@@ -25,7 +25,7 @@ SECRET_KEY = 'rmlj*c^6#do(a(4th+@dwmlyb^#05fbb)j^bp%lmikr4den1j%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('SPOTIDASH_DEBUG') == "", 
 
-ALLOWED_HOSTS = ["localhost", "spotidash.weyrich.dev"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", "spotidash.weyrich.dev"]
 
 
 # Application definition
@@ -120,4 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT  = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT  = os.path.join(BASE_DIR, 'staticfiles')
+
+# for local server
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
