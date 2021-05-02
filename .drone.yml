@@ -1,5 +1,5 @@
 kind: pipeline
-type: docker
+type: kubernetes
 name: spotidash
 steps:
   - name: build and push docker image
