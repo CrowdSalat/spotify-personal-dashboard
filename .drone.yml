@@ -4,42 +4,25 @@ name: spotidash
 steps:
   - name: build and push docker image
     image: plugins/docker
-    volumes:
-      - name: docker_sock
-        path: /var/run/docker.sock
     settings:
+      repo: crowdsalat/spotidash
+      auto_tag: true
       username:
         from_secret: docker_username
       password:
         from_secret: docker_password
-      repo: crowdsalat/spotidash
-      tags:
-        - ${DRONE_TAG}
-        - latest
-  - name: start application
-    image: docker/compose
-    volumes:
-      - name: docker_sock
-        path: /var/run/docker.sock
-    commands:
-      - docker-compose pull
-      - docker-compose up -d --force-recreate
-    environment:
-      SPOTIFY_CALLBACK_URL: "https://spotidash.weyrich.dev/albums"
-      SPOTIFY_CLIENT_ID_SECRET:
-        from_secret: SPOTIFY_CLIENT_ID_SECRET
-      SPOTIFY_CLIENT_ID:
-        from_secret: SPOTIFY_CLIENT_ID
-      SPOTIDASH_DEBUG: "No, indeed!"
-
-
-      
-
-volumes:
-  - name: docker_sock
-    host:
-      path: /var/run/docker.sock
-
 trigger:
   event:
     - tag
+---
+kind: secret
+name: docker_username
+get:
+  path: dockerhub
+  name: username
+---
+kind: secret
+name: docker_password
+get:
+  path: dockerhub
+  name: password
