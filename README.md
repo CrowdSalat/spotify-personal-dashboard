@@ -1,5 +1,7 @@
 # spotify-personal-dashboard
 
+[![Build Status](https://droneci.weyrich.dev/api/badges/CrowdSalat/spotify-personal-dashboard/status.svg)](https://droneci.weyrich.dev/CrowdSalat/spotify-personal-dashboard)
+
 Dashboard for showing and clustering currently followed albums on spotify.
 
 ## TODO
