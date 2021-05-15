@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import secrets
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,12 +21,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'rmlj*c^6#do(a(4th+@dwmlyb^#05fbb)j^bp%lmikr4den1j%'
+SECRET_KEY = secrets.token_urlsafe(40)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('SPOTIDASH_DEBUG') == None 
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1", "spotidash.weyrich.dev"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", os.environ.get('ALLOWED_HOSTS')]
 
 
 # Application definition
